@@ -1,6 +1,0 @@
-mkdir build
-cp node/main/main.mjs node/main/package.json build
-cd build
-npm publish --access public
-cd ..
-rm -r build
