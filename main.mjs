@@ -1,3 +1,4 @@
+import fs from              'fs'
 import path from    'path'
 import url from     'url'
 function importMetaToDir(meta){
@@ -10,7 +11,18 @@ function onceSigintOrSigterm(f){
     }
     process.on('SIGINT',g).on('SIGTERM',g)
 }
+async function existFile(p){
+    try{
+        await fs.promises.stat(p)
+        return 1
+    }catch(e){
+        if(!(e.code=='ENOENT'))
+            throw e
+        return 0
+    }
+}
 export default{
+    existFile,
     importMetaToDir,
     onceSigintOrSigterm,
 }
