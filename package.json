@@ -1,5 +1,5 @@
 {
     "name":"@anliting/node",
     "version":"0.0.0",
-    "main":"main/main.mjs"
+    "main":"main.mjs"
 }
