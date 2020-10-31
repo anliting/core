@@ -18,7 +18,6 @@ async function existFile(p){
     }catch(e){
         if(!(e.code=='ENOENT'))
             throw e
-        return 0
     }
 }
 export default{
