@@ -1,5 +1,1 @@
-{
-    "name":"@anliting/core",
-    "version":"0.0.0",
-    "main":"main.mjs"
-}
+{"main":"main.mjs","name":"@anliting/core","version":"0.0.0"}
