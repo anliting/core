@@ -34,23 +34,8 @@ async function existFile(p){
             throw e
     }
 }
-async function fsyncByPath(p){
-    let h=await fs.promises.open(p)
-    await h.sync()
-    await h.close()
-}
-async function fsyncWithParentByPath(p){
-    await Promise.all([
-        fsyncByPath(path.resolve(p,'..')),
-        fsyncByPath(p),
-    ])
-}
 function importMetaToDir(meta){
     return path.dirname((new url.URL(meta.url)).pathname)
-}
-async function mkdirFsync(p){
-    await fs.promises.mkdir(p)
-    await fsyncWithParentByPath(p)
 }
 function onceSigintOrSigterm(f){
     function g(){
@@ -59,18 +44,10 @@ function onceSigintOrSigterm(f){
     }
     process.on('SIGINT',g).on('SIGTERM',g)
 }
-async function renameFsync(a,b){
-    await fs.promises.rename(a,b)
-    await fsyncByPath(a)
-}
 export default{
     content,
     createReadStream,
     existFile,
-    fsyncByPath,
-    fsyncWithParentByPath,
     importMetaToDir,
-    mkdirFsync,
     onceSigintOrSigterm,
-    renameFsync,
 }
