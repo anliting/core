@@ -44,6 +44,13 @@ function onceSigintOrSigterm(f){
     }
     process.on('SIGINT',g).on('SIGTERM',g)
 }
+export{
+    content,
+    createReadStream,
+    existFile,
+    importMetaToDir,
+    onceSigintOrSigterm,
+}
 export default{
     content,
     createReadStream,
